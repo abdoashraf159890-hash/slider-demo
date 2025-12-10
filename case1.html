@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slider 1</title>
+  <style>
+    :root { --pos: 50%; --handle-size: 28px; --line-width: 2px; }
+    html, body { margin:0; padding:0; background:transparent; overflow:hidden; height:100vh; display:flex; align-items:center; justify-content:center; }
+    .compare { position:relative; width:min(100vw,800px); aspect-ratio:4/3; overflow:hidden; }
+    .compare img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .divider { position:absolute; top:0; bottom:0; left:var(--pos); width:var(--line-width); transform:translateX(-50%); background:white; }
+    .handle { position:absolute; left:var(--pos); top:50%; width:var(--handle-size); height:var(--handle-size); transform:translate(-50%,-50%); border-radius:50%; background:white; border:2px solid #000; }
+    input[type="range"] { position:absolute; inset:0; opacity:0; }
+  </style>
+</head>
+<body>
+  <div class="compare" style="--pos:50%;">
+    <img class="after" src="https://assets.cdn.filesafe.space/bm4rVCktKkg0y42zT3IA/media/6938136d103818f5b5461a79.png" alt="بعد" />
+    <img class="before" src="https://assets.cdn.filesafe.space/bm4rVCktKkg0y42zT3IA/media/693814bf10381864d84632f4.png" alt="قبل" />
+    <div class="divider"></div><div class="handle"></div>
+    <input type="range" min="0" max="100" value="50" oninput="this.parentElement.style.setProperty('--pos', this.value + '%')" />
+  </div>
+</body>
+</html>
